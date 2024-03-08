@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <title>Login Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms_container">
+        <!-- SignUp -->
+        <form action="/login" method="post" id="login" class="login_form">
+          <h2 class="title">Log In</h2>
+          <div class="input_group">
+            <div class="input_field">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                name="email"
+                id="logEmail"
+                class="input_box"
+                required
+              />
+              <label for="logEmail">Email address</label>
+            </div>
+            <div class="input_field">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                name="password"
+                class="input_box"
+                id="logPassword"
+                required
+              />
+              <label for="logPassword">Password</label>
+              <div class="eye-area">
+                <div class="eye-box" onclick="myLogPassword()">
+                  <i class="fa-regular fa-eye" id="eye-2"></i>
+                  <i class="fa-regular fa-eye-slash" id="eye-slash-2"></i>
+                </div>
+              </div>
+              <p class="error"></p>
+            </div>
+            <div class="rem_forgot">
+              <div class="remember">
+                <input type="checkbox" id="formCheck-2" class="check" />
+                <label for="formCheck-2"> Remember Me</label>
+              </div>
+              <div class="forgot">
+                <a href="#">Forgot password?</a>
+              </div>
+            </div>
+            <input type="submit" value="Login" class="input-submit" />
+            <p class="social-text">Or Sign in with social platforms</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </form>
+        <div class="footer">          
+          <p class="social-text">Don't have an account?<a href="/signup" class="signup">Signup</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function myLogPassword() {
+        var a = document.getElementById('logPassword');
+        var b = document.getElementById('eye');
+        var c = document.getElementById('eye-slash');
+        if (a.type === "password") {
+          a.type = "text"
+          b.style.opacity = "0";
+          c.style.opacity = "1";
+        } else {
+          a.type = "password"
+          b.style.opacity = "1";
+          c.style.opacity = "0";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+[
+    {
+        "title": "The Design of Everyday Things",
+        "isbn": "eteydvrr",
+        "year": 2014,
+        "id": 1
+    },
+    {
+        "title": "Eloquent JavaScript, 3rd Edition: A Modern Introduction to Programming",
+        "isbn": "eysdrfu",
+        "year": 2014,
+        "id": 2
+    },
+    {
+        "title": "Algorithms to Live By",
+        "isbn": "tdfgngbrt",
+        "year": 2016,
+        "id": 3
+    },
+    {
+        "title": "My new book",
+        "isbn": "dsfdgh",
+        "year": 2022,
+        "id": 4
+    },
+    {
+        "title": "Things fall apart",
+        "isbn": "afdsgfhg",
+        "year": 2000,
+        "id": 5
+    }
+]

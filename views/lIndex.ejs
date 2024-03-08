@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <% if (user) { %>
+        <p> <%= user.username %>, Welcome to the RentHUB!</p>
+        <p>Click  <a href="/books/?secret_token=<%= token%>">here</a> to view the books</p>
+    <% } else { %>
+    <p>Please <a href="/signup">signup</a>to view this page</p>
+    <% } %>
+</body>
+</html>
