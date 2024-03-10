@@ -1,4 +1,6 @@
 const bookModel = require('../models/book')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 
 // CRUD
@@ -8,12 +10,16 @@ const addNewBook = async (req, res) => {
     const bookInfo = req.body
     await bookModel.create(bookInfo)
         .then((book) => {
-            res.status(200).send({
-                success: true,
-                message: "Book created successfully",
-                data: book
-            })
+            const payload = { _id: req.user._id, email: req.user.email, username: req.user.username };
+            const token = jwt.sign({ user: payload }, process.env.JWT_SECRET);
+            console.log(token)
+            res.render('lIndex', { 
+                user: req.user, 
+                book, token, 
+                success: `Book created successfully!` 
+            });
         }).catch((err) => {
+            console.log(err.message);
             res.status(500).send({
                 success: false,
                 message: err.message
@@ -24,10 +30,10 @@ const addNewBook = async (req, res) => {
 // Read books
 const getAllBooks = async (req, res) => {
     await bookModel.find()
-        .then((books) => {
+        .then(books => {
             console.log(req.user)
-            res.status(200)
-            res.render('books', { user: req.user, books})
+            // res.status(200)
+            res.render('books', { user: req.user, books, token: req.token })
         }).catch((err) => {
             res.status(500).send(err.message)
         })

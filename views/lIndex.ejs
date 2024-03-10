@@ -8,8 +8,30 @@
 </head>
 <body>
     <% if (user) { %>
-        <p> <%= user.username %>, Welcome to the RentHUB!</p>
+        <% if (success) { %>
+            <p><%= success %></p>
+        <% } %>
+        <p> <%= user.username %>, Welcome to the Books API!</p>
         <p>Click  <a href="/books/?secret_token=<%= token%>">here</a> to view the books</p>
+        <details>
+            <summary>Add a book</summary>
+            <form action="/books/?secret_token=<%= token%>" method="post">
+              <div class="input_form">
+                <label for="bookTitle">Title</label>
+              <input type="text" id="bookTitle" name="title" placeholder="Title" required>
+              </div>
+              <div class="input_form">
+                <label for="bookYear">Year</label>
+              <input type="text" id="bookYear" name="year" placeholder="Year" required>
+              </div>
+              <div class="input_form">
+                <label for="bookIsbn">Isbn</label>
+              <input type="text" id="bookIsbn" name="isbn" placeholder="Isbn" required>
+              </div>
+              <input type="submit" value="Add Book">
+            </form>
+        </details>
+        
     <% } else { %>
     <p>Please <a href="/signup">signup</a>to view this page</p>
     <% } %>

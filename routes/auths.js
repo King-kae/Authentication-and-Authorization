@@ -10,7 +10,7 @@ authRouter.post(
     '/signup',
     passport.authenticate('signup', { session: false }), async (req, res, next) => {
         console.log(req.user)
-        const body = { _id: req.user._id, email: req.user.email };
+        const body = { _id: req.user._id, email: req.user.email, username: req.user.username };
         const token = jwt.sign({ user: body }, process.env.JWT_SECRET, {
             expiresIn: "1h"
         })
@@ -19,7 +19,7 @@ authRouter.post(
                 message: "Invalid token"
             })
         }
-        res.render('lIndex', { user: req.user, token });
+        res.render('lIndex', { user: req.user, token, success: null });
     }
 );
 
@@ -43,10 +43,10 @@ authRouter.post(
                     async (error) => {
                         if (error) return next(error);
 
-                        const body = { _id: user._id, email: user.email };
+                        const body = { _id: user._id, email: user.email, username: user.username };
                         const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
                         console.log(token)
-                        return res.render('lIndex', { user, token });
+                        return res.render('lIndex', { user, token, success: null });
                     }
                 );
             } catch (error) {

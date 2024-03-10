@@ -29,9 +29,9 @@ app.use(express.json())
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    // resave: false,
-    // saveUninitialized: true,
-    // cookie: { secure: true }
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
 }));
 
 app.use(passport.initialize());
@@ -121,10 +121,17 @@ app.get('/signup', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login')
 })
+app.get('/home', (req, res) => {
+    res.render('lIndex', { error: null, success: null})
+})
 
 app.get('/books/?secret_token=:token', (req, res) => {
-    res.render('books')
+    res.render('books', { error: null, success: null})
 })
+// app.post('/books/?secret_token=:token', (req, res) => {
+//     res.render('lIndex', { error: null, success: 'Book created successfully!' })
+// })
+
 
 app.post('/logout', function (req, res, next) {
     req.logout(function (err) {
